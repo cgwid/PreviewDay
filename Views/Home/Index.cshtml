@@ -1,0 +1,79 @@
+@using Microsoft.Graph
+@{
+    ViewData["Title"] = "Home Page";
+    var lists = ViewData["GraphApiResult"] as List<ToDoList>;
+    var calendarEvents = ViewData["calendarEvents"] as IUserCalendarViewCollectionPage;
+    var formattedTime = ViewData["formattedTime"] as List<formattedTime>;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome @ViewData["userFirstName"]</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>To Do Lists</h1>
+            <div>
+                <p>Priorty Level:</p>
+                <p class="text-danger"><strong>Red</strong> - important</p>
+                <p class="text-primary"><strong>Blue</strong> - normal</p>
+            </div>
+            @foreach (var list in lists!)
+            {
+                <div class="mb-4">
+                    <h4>@list.ListName</h4>
+                    <ul class="list-group">
+                        @foreach (var task in list.Tasks!)
+                        {
+                            <li class="@(task.Importance == Importance.High ? 
+                            "border-danger" : "border-primary") list-group-item border-primary"
+                            >@task.Title
+                                @if(task.SubTasks.Any())
+                                {
+                                    <ul>
+                                        @foreach (var subTask in task.SubTasks)
+                                        {
+                                            <li>
+                                                @subTask.DisplayName
+                                            </li>
+                                        }
+                                        
+                                    </ul>
+                                }
+                                @if(!String.IsNullOrEmpty(task.Content))
+                                {
+                                    <p>Note: @task.Content</p>
+                                }
+                            </li>
+                            
+                        }
+                    </ul>
+                </div>
+            }
+        </div>
+    
+        <div class="col">
+            <h1>Calendar</h1>
+            <div>
+            @foreach(var evt in calendarEvents!)
+            {
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">@evt.Subject</h4>
+                        <p class="card-text"><strong>Organizer:</strong> @evt.Organizer.EmailAddress.Name</p>
+                        @foreach (var time in formattedTime!)
+                        {
+                            @if(time.Subject == evt.Subject)
+                            {
+                                <p class="card-text"><strong class="text-success">Start:</strong> @time.StartTime</p>
+                                <p class="card-text"><strong class="text-danger">End:</strong> @time.EndTime</p>
+                            }
+                        }
+                    </div>
+                </div>
+            }
+            </div> 
+        </div>
+    </div>
+</div>
