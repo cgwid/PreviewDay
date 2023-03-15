@@ -12,8 +12,9 @@ with the idea of being able to plan out the day.
 For the ToDo lists, it gets the tasks: 
 1) That are not yet completed
 2) Displays the subtasks for Tasks that have them
-2) Orders by Importance
-3) Hightlights the tasks that have been marked important in red
+3) Displays the notes for the Task
+4) Orders by Importance
+5) Hightlights the tasks that have been marked important in red
 
 For the Calendar:
 1) It gets the events for that day
