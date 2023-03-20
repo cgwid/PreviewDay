@@ -35,6 +35,7 @@ builder.Services.AddRazorPages()
 
 builder.Services.AddScoped<GraphProfileClient>();
 builder.Services.AddScoped<GraphToDoClient>();
+builder.Services.AddScoped<GraphCalendarClient>();
 
 var app = builder.Build();
 

@@ -32,5 +32,25 @@ namespace PreviewDay.Graph
             }
             
         }
+
+        public async Task<ITodoTaskListTasksCollectionPage> GetTasksForList(string listId)
+        {
+            try
+            {
+                return await _graphServiceClient.Me.Todo.Lists[listId].Tasks
+                    .Request()
+                    .Filter("status ne 'completed'")
+                    .OrderBy("importance desc")
+                    .GetAsync();
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError($"Error at /me/todo/lists/listId/tasks - {ex.Message}");
+                throw;
+            }
+            
+        }
+
+        
     }
 }

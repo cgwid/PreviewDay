@@ -29,7 +29,27 @@ namespace PreviewDay.Graph
             }
             catch(Exception ex)
             {
-                _logger.LogError($"error /me - {ex.Message}");
+                _logger.LogError($"error /me - DisplayName - {ex.Message}");
+                throw;
+            }
+        }
+
+        public async Task<User> GetUserMailBoxSettings()
+        {
+            try
+            {
+                return await _graphServiceClient
+                .Me
+                .Request()
+                .Select(u => new
+                {
+                    u.MailboxSettings
+                })
+                .GetAsync();
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError($"error /me - MailBoxSettings - {ex.Message}");
                 throw;
             }
         }
