@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Graph;
+using Microsoft.Identity.Web;
 using PreviewDay.Graph;
 using PreviewDay.Models;
 using System.Diagnostics;
@@ -9,6 +10,7 @@ using System.Text.Json;
 namespace PreviewDay.Controllers
 {
     [Authorize]
+    [AuthorizeForScopes(ScopeKeySection = "MicrosoftGraph:Scopes")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
