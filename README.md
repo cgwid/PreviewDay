@@ -1,6 +1,3 @@
-(https://www.credly.com/badges/005d957c-13dc-43de-9291-a31999e16144/public_url)
-
-
 # PreviewDay
 
 [![Hack Together: Microsoft Graph and .NET](https://img.shields.io/badge/Microsoft%20-Hack--Together-orange?style=for-the-badge&logo=microsoft)](https://github.com/microsoft/hack-together)
@@ -10,7 +7,7 @@ v1
 Created for Hack Together: Microsoft Graph and .NET
 
 At the moment, this is a simple ASP.NET Core MVC application that uses Microsoft Graph to get a users ToDo Lists and Calendar Events
-with the idea of being able to plan out the day. 
+with the idea of being able to plan out the day. It uses distributed token cache with Redis.
 
 For the ToDo lists, it gets the tasks: 
 1) That are not yet completed
