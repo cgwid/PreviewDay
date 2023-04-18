@@ -2,7 +2,7 @@
 
 [![Hack Together: Microsoft Graph and .NET](https://img.shields.io/badge/Microsoft%20-Hack--Together-orange?style=for-the-badge&logo=microsoft)](https://github.com/microsoft/hack-together)
 
-v1
+[![Credly: Microsoft Hack Together Badge](https://img.shields.io/badge/Credly-Microsoft%20Hack--Together%20Badge-blue?style=for-the-badge&logo=credly)](https://www.credly.com/badges/005d957c-13dc-43de-9291-a31999e16144/public_url)
 
 Created for Hack Together: Microsoft Graph and .NET
 
